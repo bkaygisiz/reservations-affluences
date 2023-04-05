@@ -1,10 +1,19 @@
-import express from "express";
-import { isReservation } from "./controller/controller.js";
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const controller_js_1 = require("./controller/controller.js");
 const app = express();
-
-app.get("/api/reservations", async (req, res) => {
-    const result = await isReservation(req, res);
+app.get("/api/reservations", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield (0, controller_js_1.isReservation)(req, res);
     res.json(result);
-});
-
-app.listen(3000, () => console.log("Listening on port 3000!"))
+}));
+app.listen(3000, () => console.log("Listening on port 3000!"));

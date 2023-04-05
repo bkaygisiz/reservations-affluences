@@ -1,10 +1,26 @@
-import { isAvailable } from "../model/model.js";
-
-export async function isReservation(req, _res) {
-    const { date, resourceId } = req.query;
-    const result = await isAvailable(date, resourceId);
-    const msg = {
-        'available': result
-    }
-    return msg;
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isReservation = void 0;
+const model_js_1 = require("../model/model.js");
+function isReservation(req, _res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const date = req.query.date;
+        const resourceId = req.query.resourceId;
+        const result = yield (0, model_js_1.isAvailable)(date, resourceId);
+        console.log(result);
+        const msg = {
+            'available': result
+        };
+        return msg;
+    });
 }
+exports.isReservation = isReservation;
